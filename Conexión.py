@@ -76,29 +76,49 @@ def start_server(ip):
         print("Mensaje recibido:", msg)
         print(type(msg))
         # Acciones según el mensaje
-        for x in msg:
-            if int(x) == 0:
-                buzzer.value(1)
-                time.sleep(0.1)
-            if int(x) == 1:
-                buzzer.value(1)
-                time.sleep(0.3)
-            if int(x) == 2:
-                buzzer.value(0)
-                time.sleep(0.1)
-            if int(x) == 3:
-                buzzer.value(0)
-                time.sleep(0.3)
-            if int(x) == 4:
-                buzzer.value(0)
-                time.sleep(0.7)
-        buzzer.value(0)
-        
-        while True:
-            if boton.value() == 1:
-                print("Hola")
-                contar()
-                break
+        if msg[0] == "a":
+            msg = msg[1:]
+            for x in msg:
+                if int(x) == 0:
+                    buzzer.value(1)
+                    time.sleep(0.1)
+                if int(x) == 1:
+                    buzzer.value(1)
+                    time.sleep(0.3)
+                if int(x) == 2:
+                    buzzer.value(0)
+                    time.sleep(0.1)
+                if int(x) == 3:
+                    buzzer.value(0)
+                    time.sleep(0.3)
+                if int(x) == 4:
+                    buzzer.value(0)
+                    time.sleep(0.7)
+            buzzer.value(0)
+        if msg[0] == "b":
+            msg = msg[1,]
+            for x in msg:
+                if int(x) == 0:
+                    buzzer.value(1)
+                    time.sleep(0.1)
+                if int(x) == 1:
+                    buzzer.value(1)
+                    time.sleep(0.3)
+                if int(x) == 2:
+                    buzzer.value(0)
+                    time.sleep(0.1)
+                if int(x) == 3:
+                    buzzer.value(0)
+                    time.sleep(0.3)
+                if int(x) == 4:
+                    buzzer.value(0)
+                    time.sleep(0.7)
+            buzzer.value(0)
+            while True:
+                if boton.value() == 1:
+                    print("Hola")
+                    contar()
+                    break
 
 ip = connect_wifi()
 start_server(ip)

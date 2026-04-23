@@ -60,6 +60,18 @@ def traducir(palabra):
                 palabra_morse += [3]
     print(palabra_morse)
 
+def comparar_entrada():
+    global palabra_elegida
+    global puntaje_juego1
+    Palabra_respuesta = Respuesta.get()
+    for i in range(len(Palabra_respuesta)):
+        if Palabra_respuesta[i].lower() == palabra_elegida[i]:
+            puntaje_juego1 += 1
+    Puntaje_juego1_Label["text"] = puntaje_juego1
+
+    
+
+
 
 def finalizar(lista):  #Finaliza la interpretacion
     puntaje = 0
@@ -106,8 +118,42 @@ def pasar_a_string(lista):
         string_palabra += str(x)
     return string_palabra
 
-    
 def empezar_juego_1():
+    global palabra_elegida
+    global puntaje1
+    global puntaje2
+    global palabra_morse
+    window_main.place_forget()
+    window_juego_1.place(x=0,y=0)
+    puntaje2 = 0
+    puntaje1 = 0
+    palabra_morse.clear()
+    palabra_elegida = Lista_palabras[random.randint(0,9)]
+    traducir(palabra_elegida)
+    msg = "a" + pasar_a_string(palabra_morse)
+    print(msg)
+    if msg:
+        client_socket.send(msg.encode())
+
+def segunda_juego_1():
+    global palabra_elegida
+    global puntaje1
+    global puntaje2
+    global palabra_morse
+    window_main.place_forget()
+    window_juego_1.place(x=0,y=0)
+    puntaje2 = 0
+    puntaje1 = 0
+    palabra_morse.clear()
+    palabra_elegida = Lista_palabras[random.randint(0,9)]
+    traducir(palabra_elegida)
+    msg = "a" + pasar_a_string(palabra_morse)
+    print(msg)
+    if msg:
+        client_socket.send(msg.encode())
+    
+def empezar_juego_2():
+    global palabra_elegida
     global puntaje1
     global puntaje2
     global palabra_morse
@@ -119,7 +165,7 @@ def empezar_juego_1():
     palabra_morse.clear()
     palabra_elegida = Lista_palabras[random.randint(0,9)]
     traducir(palabra_elegida)
-    msg = pasar_a_string(palabra_morse)
+    msg = "b" + pasar_a_string(palabra_morse)
     if msg:
         client_socket.send(msg.encode())
 
@@ -129,30 +175,53 @@ Lista_palabras = ["Bomba", "Capybara", "Chocolate", "Gatico", "Mondongo", "Esenc
 
 palabra_morse= []
 lista_jugador_1 = []
+puntaje_juego1 = 0
 puntaje1 = 0
 puntaje2 = 0
 
 window = tk.Tk()
 window.geometry("400x400")
 
+window_main = tk.Canvas(window, height= 400, width= 400)
+window_main.place(x=0,y=0)
 
-boton = tk.Button(window, text= "iniciar juego 1", command= empezar_juego_1)
-boton.place(x= 100, y= 0)
+boton_juego1 = tk.Button(window_main, text= "iniciar juego 1", command= empezar_juego_1)
+boton_juego1.place(x= 200, y= 0)
 
-Texto_puntaje = tk.Label(window, text="")
+boton_juego2 = tk.Button(window_main, text= "iniciar juego 2", command= empezar_juego_2)
+boton_juego2.place(x= 100, y= 0)
+
+window_juego_2 = tk.Canvas(window, width=400,height=400)
+
+Texto_puntaje = tk.Label(window_main, text="")
 Texto_puntaje.place(x= 100, y= 150)
 
-Puntaje1_Label = tk.Label(window, text= "hola")
+Puntaje1_Label = tk.Label(window_main, text= "hola")
 Puntaje1_Label.place(x= 200, y= 225)
 
-Puntaje2_Label = tk.Label(window, text= "hola")
+Puntaje2_Label = tk.Label(window_main, text= "hola")
 Puntaje2_Label.place(x= 300, y= 225)
 
-status_label = tk.Label(window, text="Desconectado")
+status_label = tk.Label(window_main, text="Desconectado")
 status_label.place(x= 100, y= 300)
 
-salir_btn = tk.Button(window, text="Salir", command=salir)
+salir_btn = tk.Button(window_main, text="Salir", command=salir)
 salir_btn.place(x= 100, y= 350)
+
+window_juego_1 = tk.Canvas(window, height=400, width=400)
+
+Respuesta = tk.Entry(window_juego_1)
+Respuesta.place(x=10,y=150)
+
+boton_respuesta = tk.Button(window_juego_1, text= "Confirmar", command=comparar_entrada)
+boton_respuesta.place(x=200, y= 250)
+
+ronda2_juego1 = tk.Button(window_juego_1, text= "Siguiente ronda")
+
+Puntaje_juego1_Label = tk.Label(window_juego_1, text= "")
+Puntaje_juego1_Label.place(x=200,y=350)
+
+
 
 
 keyboard.add_hotkey('a', contar)
