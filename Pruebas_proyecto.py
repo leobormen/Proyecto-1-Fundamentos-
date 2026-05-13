@@ -247,19 +247,30 @@ rondas = 1
 #--------------------------------Parte principal de la interfaz-----------------------------
 
 window = tk.Tk()
+window.title('Proyecto 1')
 window.geometry("400x400")
+window.resizable(False,False)
+
+
 
 window_main = tk.Canvas(window, height= 400, width= 400)
 window_main.place(x=0,y=0)
 
-boton_juego1 = tk.Button(window_main, text= "iniciar juego 1", command= empezar_juego_1)
-boton_juego1.place(x= 200, y= 0)
+menuseleccion=tk.Canvas(window_main, height=200, width =200, bg='grey')
+menuseleccion.place(x=0)
 
-boton_juego2 = tk.Button(window_main, text= "iniciar juego 2", command= empezar_juego_2)
-boton_juego2.place(x= 100, y= 0)
+titulo=tk.Label(window_main, text = ('Proyecto Código Morse'), font=('Papyrus',20),fg='blue')
+titulo.place(x=75, y=100)
 
-boton_puntuaciones = tk.Button(window_main, text= "Mejores puntuaciones", command= ver_puntuaciones)
-boton_puntuaciones.place(x= 100, y= 200)
+
+boton_juego1 = tk.Button(menuseleccion, text= "Iniciar Juego 1", command= empezar_juego_1)
+boton_juego1.pack()
+
+boton_juego2 = tk.Button(menuseleccion, text= "Iniciar Juego 2", command= empezar_juego_2)
+boton_juego2.pack()
+
+boton_puntuaciones = tk.Button(window_main, text= "HIGHSCORES", command= ver_puntuaciones)
+boton_puntuaciones.place(x= 160, y= 200)
 
 #----------------------------------Ventana del juego 2----------------------------------------
 
@@ -275,10 +286,10 @@ Puntaje2_Label = tk.Label(window_juego_2, text= "hola")
 Puntaje2_Label.place(x= 300, y= 225)
 
 status_label = tk.Label(window_main, text="Desconectado")
-status_label.place(x= 100, y= 300)
+status_label.place(x= 160, y= 300)
 
 salir_btn = tk.Button(window_main, text="Salir", command=salir)
-salir_btn.place(x= 100, y= 350)
+salir_btn.place(x= 175, y= 350)
 
 ronda_siguiente_juego2 = tk.Button(window_juego_2, text= "Siguiente ronda", command=siguiente_ronda_juego2)
 finalizar_juego2 = tk.Button(window_juego_2, text= "Finalizar", command=menu)
@@ -305,7 +316,7 @@ record_label = tk.Label(window_juego_1, text= "¡Nuevo record!")
 
 window_puntuaciones = tk.Canvas(window, height=400, width=400)
 
-puntuacion_label = tk.Label(window_puntuaciones, text="Los mejores puntajes son:")
+puntuacion_label = tk.Label(window_puntuaciones, text="EL TOP 10")
 puntuacion_label.place(x= 150, y= 10)
 puntuacion1_label = tk.Label(window_puntuaciones, text="", width= 32)
 puntuacion1_label.place(x=150, y= 40)
@@ -328,7 +339,7 @@ puntuacion9_label.place(x=150, y= 280)
 puntuacion10_label = tk.Label(window_puntuaciones, text="", width= 32)
 puntuacion10_label.place(x=150, y= 310)
 
-boton_menu = tk.Button(window_puntuaciones, text="Menú", command=menu)
+boton_menu = tk.Button(window_puntuaciones, text="Regresar", command=menu)
 boton_menu.place(x=10, y= 10)
 
 
