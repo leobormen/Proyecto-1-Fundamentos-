@@ -21,8 +21,9 @@ Morse_diccionario = {"a": [0, 2, 1], "b": [1, 2, 0, 2, 0, 2, 0], "c": [1, 2, 0, 
 
 puntajes = []
 
-
-
+with open("puntajes.txt", "r") as file:
+    puntajes_str = file.read()
+    puntajes = puntajes_str.split(",")
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -403,5 +404,5 @@ boton_menu.place(x=10, y= 10)
 
 keyboard.add_hotkey('space', contar)
 
-
+connect()
 window.mainloop()   
