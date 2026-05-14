@@ -6,7 +6,7 @@ import random
 import socket
 import threading
 
-SERVER_IP = "192.168.137.241"  # Cambia esto con la IP de la Pico W
+SERVER_IP = "10.165.83.130"  # Cambia esto con la IP de la Pico W
 PORT = 1717
 
 Morse_diccionario = {"a": [0, 2, 1], "b": [1, 2, 0, 2, 0, 2, 0], "c": [1, 2, 0, 2, 1, 2, 0], "d": [1, 2, 0, 2, 0], "e": [0], "f": [0, 2, 0, 2, 1, 2, 0],
@@ -45,24 +45,27 @@ def connect():
         status_label.config(text=f"Error: {e}")
 
 def receive_messages():
+    global puntaje1
     global puntaje2
     while True:
         try:
             msg = client_socket.recv(1024).decode()
-            puntaje2 += finalizar(list(msg))
-            print(puntaje2)
+            print("recibido")
             if rondas % 2 == 0:
-                puntaje1 += finalizar(lista_jugador_1)
-                Puntaje1_Label["text"] = finalizar(lista_jugador_1), "/", len(palabra_morse)
+                print("primera")
+                puntaje1 += finalizar(list(msg))
+                Puntaje1_Label["text"] = finalizar(list(msg)), "/", len(palabra_morse)
             else:
-                puntaje2 += finalizar(lista_jugador_1)
-                Puntaje2_Label["text"] = finalizar(lista_jugador_1), "/", len(palabra_morse)
+                print("segunda")
+                puntaje2 += finalizar(list(msg))
+                Puntaje2_Label["text"] = finalizar(list(msg)), "/", len(palabra_morse)
             if rondas == 3:
                 finalizar_juego2.place(y=350, x=160) 
             else:
                 ronda_siguiente_juego2.place(y=350,x=160)
+            continue
         except:
-            break
+            continue
 
 def puntaje():
     for i in range(len(puntajes)):
