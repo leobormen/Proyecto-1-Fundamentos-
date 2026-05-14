@@ -6,7 +6,7 @@ import random
 import socket
 import threading
 
-SERVER_IP = "10.165.83.130"  # Cambia esto con la IP de la Pico W
+SERVER_IP = "192.168.137.241"  # Cambia esto con la IP de la Pico W
 PORT = 1717
 
 Morse_diccionario = {"a": [0, 2, 1], "b": [1, 2, 0, 2, 0, 2, 0], "c": [1, 2, 0, 2, 1, 2, 0], "d": [1, 2, 0, 2, 0], "e": [0], "f": [0, 2, 0, 2, 1, 2, 0],
@@ -377,27 +377,27 @@ boton_menu_resultados.place(x=10, y= 10)
 window_puntuaciones = tk.Canvas(window, height=400, width=400, bg="#a52a2a")
 
 puntuacion_label = tk.Label(window_puntuaciones, text="EL TOP 10", font=('Papyrus',20), bg="#a52a2a",fg="#ffffff")
-puntuacion_label.place(x= 150, y= 10)
+puntuacion_label.place(x= 130, y= 20)
 puntuacion1_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion1_label.place(x=150, y= 40)
+puntuacion1_label.place(x=110, y= 70)
 puntuacion2_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion2_label.place(x=150, y= 70)
+puntuacion2_label.place(x=110, y= 100)
 puntuacion3_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion3_label.place(x=150, y= 100)
+puntuacion3_label.place(x=110, y= 130)
 puntuacion4_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion4_label.place(x=150, y= 130)
+puntuacion4_label.place(x=110, y= 160)
 puntuacion5_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion5_label.place(x=150, y= 160)
+puntuacion5_label.place(x=110, y= 190)
 puntuacion6_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion6_label.place(x=150, y= 190)
+puntuacion6_label.place(x=110, y= 220)
 puntuacion7_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion7_label.place(x=150, y= 220)
+puntuacion7_label.place(x=110, y= 250)
 puntuacion8_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion8_label.place(x=150, y= 250)
+puntuacion8_label.place(x=110, y= 280)
 puntuacion9_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion9_label.place(x=150, y= 280)
+puntuacion9_label.place(x=110, y= 310)
 puntuacion10_label = tk.Label(window_puntuaciones, text="", width= 32, bg="#a52a2a",fg="#ffffff")
-puntuacion10_label.place(x=150, y= 310)
+puntuacion10_label.place(x=110, y= 340)
 
 boton_menu = tk.Button(window_puntuaciones, text="Regresar", command=menu)
 boton_menu.place(x=10, y= 10)
