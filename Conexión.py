@@ -200,7 +200,7 @@ def start_server(ip):
                         AB2(0)                 
                         CLK2(1)                          
                         CLK2(0)
-                    time.sleep(1)
+                    time.sleep(0.5)
             else:
                 msg = traducir(msg[1:])
                 for x in msg:
