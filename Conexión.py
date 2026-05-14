@@ -35,7 +35,7 @@ led2 = Pin(20, Pin.OUT)
 led3 = Pin(21, Pin.OUT)
 buzzer = Pin(27, Pin.OUT)
 boton = Pin(28, Pin.IN, Pin.PULL_DOWN)
-dip_switch = Pin(16, Pin.IN)
+dip_switch = Pin(16, Pin.IN, Pin.PULL_DOWN)
 
 
 
@@ -93,7 +93,8 @@ def contar():  #Esto interpreta como el usuario presiona el boton indicado, defi
         else:
             print(lista_jugador_2)
             conn.send(pasar_a_string(lista_jugador_2))
-            break
+            print("enviado")
+            break 
 
 def traducir(palabra):
     palabra_morse = []
